@@ -1,0 +1,63 @@
+﻿@*@model MoviesMvcCoreBilgeAdam.Entities.Movie*@
+@model MovieModel
+
+@{
+    ViewData["Title"] = "Edit Movie";
+    
+}
+
+<h1>Edit Movie</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+       @* <form action="/Movies/Edit" method="post">*@
+            @*Form HTML tag'i default olarak get methodunu kullanır.*@
+        @*<form asp-controller="Movies" asp-action=="Edit">*@
+            @*Form tag helper'ı default olarak
+            post methodunu kullanır.*@
+        <form asp-action="Edit">
+
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <div asp-validation-summary="All" class="text-danger"></div>
+            
+            @*<input type="hidden" value="@Model.Id"  name="Id"/>*@
+           @* HTML ile hidden input oluşturma*@
+            
+           <input  type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input type="text" class="form-control" value="@Model.Name"/>
+                @* HTML ile hidden input oluşturma*@
+                <input type="hidden" asp-for="Id"/>
+              @*  Tag helper ile hidden input oluşturma*@
+
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductionYear" class="control-label"></label>
+                <input asp-for="ProductionYear" class="form-control" />
+                <span asp-validation-for="ProductionYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoxOfficeReturn" class="control-label"></label>
+                <input asp-for="BoxOfficeReturn" class="form-control" />
+                <span asp-validation-for="BoxOfficeReturn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

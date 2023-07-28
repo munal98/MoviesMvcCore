@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Create Movie";
+}
+
+<style>
+    .boldlabel {
+        font-weight: bold;
+    }
+</style>
+
+<h2>Create Movie</h2>
+<hr />
+
+<!-- form 1. method: get (default), query string ile adres üzerinden verilerin gönderilmesini sağlar. -->
+<!-- form 2. method: post, verilerin gizli olarak gönderilmesini sağlar. -->
+<!-- action: form'daki verilerin hangi adrese gönderileceğini belirtir. -->
+<form method="post" action="/Movies/Create">
+    <div class="row mb-3">
+        <label for="tbName" class="col-sm-2 col-form-label"><strong>Movie Name</strong></label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="tbName" placeholder="Enter movie name..." name="Name" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="nudProductionYear" class="col-sm-2 col-form-label"><b>Production Year</b></label>
+        <div class="col-sm-5">
+            <input type="number" class="form-control" id="nudProductionYear" placeholder="Enter production year..." min="1950" max="2050" name="ProductionYear" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="tbBoxOfficeReturnModel" class="col-sm-2 col-form-label" style="font-weight: bold;">Box Office Return</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="tbBoxOfficeReturnModel" placeholder="Enter box office return..." name="BoxOfficeReturnModel">
+        </div>
+    </div>
+     <div class="row mb-3">
+        <label class="col-sm-2 col-form-label boldlabel">Directors</label>
+        <div class="col-sm-5" style="padding-top: 6px;">
+            <span class="text-secondary">Directors can be edited after movie creation.</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-sm-2 col-sm-5">
+            <button type="submit" class="btn btn-dark">Save</button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="reset" class="btn btn-outline-dark">Reset</button> 
+        </div>
+    </div>
+</form>

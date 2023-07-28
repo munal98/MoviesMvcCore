@@ -1,0 +1,22 @@
+﻿1) Entity'ler oluşturulur.
+2) Microsoft.EntityFrameworkCore.SqlServer ile Microsoft.EntityFrameworkCore.Tools paketleri NuGet'ten indirilir.
+3) DbContext'ten türeyen Context ve içerisindeki DbSet'ler oluşturulur.
+4) Context içerisindeki OnConfiguring methodunda connection string 
+server=.\\SQLEXPRESS;database=MoviesCoreDB;trusted_connection=true; formatta yazılır.
+5) Tools -> NuGet Package Manager -> Package Manager Console açılır ve önce add-migration v1 daha sonra 
+update-database komutları çalıştırılır.
+6) İstenirse ilk verileri oluşturmak için Database gibi bir controller oluşturulup içerisine Seed gibi bir action yazılarak
+veritabanında ilk verilerin oluşturulması sağlanabilir.
+7) Entity model dönüşümlerini gerçekleştirecek servis class'ları önce interface üzerinden methodlar tanımlanarak oluşturulur.
+Tanımlanabilecek methodlar CRUD işlemlerine karşılık gelecek GetList, GetDetails, Add, Update ve Delete methodlarıdır.
+Bu aşamada entity'lere karşılık model'ler de oluşturulmalıdır. Servislerde de dependency injection için parametreli
+constructor yazılır.
+8) Program.cs altında IoC Container içerisinde önce DbContext için projenin Context'i tanımı,
+daha sonra da service interface'leri için servis class'ları tanımları yapılır.
+9) İlgili model için Controller oluşturulur, dependency injection için parametreli constructor yazılır, daha sonra 
+Index, Details, Create, Edit ve Delete aksiyonları yazılır.
+10) Bu aksiyonlar sonucunda ilgili view'lar oluşturulur.
+11) Bazı controller aksiyon'larını çağırabilmek için view'larda veya layout view'ında link'ler yazılır.
+
+Yapı:
+View <-> Controller (Başlangıç noktası) <-> Service (model, entity -> context -> veritabanı)
